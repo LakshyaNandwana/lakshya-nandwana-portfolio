@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lakshya Nandwana — Backend and AI Applications Engineer specializing in Python, Go, microservices, agentic AI, RAG, semantic search, and cloud-native systems." />
+  <meta name="keywords" content="Lakshya Nandwana, Backend Engineer, Python Engineer, AI Applications Engineer, Agentic AI Engineer, Go Developer, Microservices, RAG, Semantic Search" />
+  <meta name="author" content="Lakshya Nandwana" />
+  <title>Lakshya Nandwana | Backend & AI Applications Engineer</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #131a2d;
+      --panel: rgba(19, 26, 45, 0.85);
+      --text: #eef2ff;
+      --muted: #b6c1e2;
+      --line: rgba(255,255,255,0.09);
+      --primary: #6ea8fe;
+      --secondary: #7ee7c1;
+      --accent: #9da8ff;
+      --shadow: 0 18px 50px rgba(0,0,0,0.28);
+      --radius: 22px;
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(110, 168, 254, 0.15), transparent 28%),
+        radial-gradient(circle at top right, rgba(126, 231, 193, 0.12), transparent 24%),
+        linear-gradient(180deg, #090d1a 0%, #0b1020 45%, #10182b 100%);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(10, 14, 28, 0.72);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      font-size: 1.05rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 56px 0 32px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 38px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(110, 168, 254, 0.12);
+      border: 1px solid rgba(110, 168, 254, 0.22);
+      color: #dbe7ff;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+    }
+
+    h1, h2, h3, h4 { line-height: 1.15; margin: 0 0 14px; }
+    h1 { font-size: clamp(2.15rem, 4vw, 4rem); }
+    h2 { font-size: clamp(1.6rem, 2.5vw, 2.35rem); }
+    h3 { font-size: 1.15rem; }
+    p { margin: 0 0 16px; color: var(--muted); }
+
+    .hero-lead {
+      font-size: 1.08rem;
+      max-width: 60ch;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .btn {
+      padding: 12px 18px;
+      border-radius: 14px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #88b8ff);
+      color: #0d1730;
+      box-shadow: 0 12px 30px rgba(110, 168, 254, 0.22);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.04);
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .profile-wrap {
+      padding: 24px;
+    }
+
+    .profile-card {
+      overflow: hidden;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    }
+
+    .profile-image {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .profile-meta {
+      padding: 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .quick-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .stat {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.15rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    section {
+      padding: 28px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .panel {
+      padding: 26px;
+    }
+
+    .chip-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      padding: 20px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .meta-line {
+      color: var(--secondary);
+      font-weight: 600;
+      font-size: 0.94rem;
+      margin-bottom: 8px;
+    }
+
+    ul.clean {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    ul.clean li + li { margin-top: 10px; }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .project {
+      padding: 22px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      height: 100%;
+    }
+
+    .project p { margin-bottom: 12px; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .contact-card {
+      padding: 22px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+    }
+
+    .contact-card span {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .footer {
+      padding: 30px 0 56px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .tagline {
+      color: var(--text);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .availability {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      margin-top: 10px;
+      color: #daf7ed;
+      font-weight: 600;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #7ee7c1;
+      box-shadow: 0 0 0 6px rgba(126, 231, 193, 0.12);
+    }
+
+    .muted-small {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 12px;
+      font: inherit;
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .grid-2,
+      .projects,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .mobile-menu-btn { display: inline-flex; }
+
+      .nav-links {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding-top: 8px;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .hero-copy,
+      .panel,
+      .profile-wrap { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Lakshya Nandwana</div>
+      <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle navigation">Menu</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Focus Areas</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="card hero-copy">
+          <div class="eyebrow">Backend Engineer • Python Engineer • AI Applications Engineer</div>
+          <h1>Building production-grade backend systems and AI applications.</h1>
+          <p class="hero-lead">
+            I design and deliver scalable microservices, secure APIs, cloud-ready services, and modern AI-enabled workflows using Python, Go, PostgreSQL, Docker, Kubernetes, agentic AI patterns, RAG, semantic search, and orchestration-driven architectures.
+          </p>
+          <p>
+            Currently working as a Software Engineer at Tiersight while pursuing an M.Tech in Computer Science Engineering. Open to remote, hybrid, and international opportunities across Europe, Japan, and New Zealand.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contact">Work With Me</a>
+            <a class="btn btn-secondary" href="Lakshya_Nandwana_Resume_v2.docx" download>Download Resume</a>
+          </div>
+          <div class="quick-stats">
+            <div class="stat">
+              <strong>4+ Years</strong>
+              <span class="muted-small">Backend and AI engineering experience</span>
+            </div>
+            <div class="stat">
+              <strong>Production Focus</strong>
+              <span class="muted-small">Microservices, APIs, auth, brokers, deployment</span>
+            </div>
+            <div class="stat">
+              <strong>AI Systems</strong>
+              <span class="muted-small">Agentic AI, MCP, RAG, semantic search, EDA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card profile-wrap">
+          <div class="profile-card">
+            <img src="profile.png" alt="Lakshya Nandwana professional portrait" class="profile-image" />
+            <div class="profile-meta">
+              <div>
+                <h3 style="margin-bottom:6px;">Lakshya Nandwana</h3>
+                <p style="margin:0;">Backend & AI Applications Engineer</p>
+              </div>
+              <div class="availability">
+                <span class="dot"></span>
+                Open to remote and international roles
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container grid-2">
+        <div class="card panel">
+          <div class="section-head">
+            <div>
+              <h2>About Me</h2>
+              <p>Engineer with a backend-first foundation and strong AI applications focus.</p>
+            </div>
+          </div>
+          <p>
+            I specialize in designing maintainable backend systems and integrating intelligent workflows into real products. My experience spans secure APIs, gRPC services, CLI applications, asynchronous processing, relational databases, message-driven systems, cloud deployment, and modern AI orchestration.
+          </p>
+          <p>
+            My recent work has expanded into agentic AI systems using A2A protocols, MCP-enabled tooling, RAG pipelines, semantic search, LangGraph-style orchestration, and data analysis workflows that bridge backend engineering with AI product delivery.
+          </p>
+        </div>
+
+        <div class="card panel">
+          <div class="section-head">
+            <div>
+              <h2>What I Bring</h2>
+              <p>Strong execution across architecture, implementation, and delivery.</p>
+            </div>
+          </div>
+          <ul class="clean">
+            <li>Production-grade Python and Go development for backend and AI workflows</li>
+            <li>Microservices, secure API design, service-to-service communication, and gRPC</li>
+            <li>PostgreSQL-centered application development with deployment via Docker and Kubernetes</li>
+            <li>Experience with auth mechanisms, CLI tooling, message brokers, and event-driven architecture</li>
+            <li>AI application work spanning RAG, semantic search, agent systems, and EDA-driven model workflows</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Core Skills</h2>
+            <p>A stack built for real-world backend and AI product engineering.</p>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="card panel">
+            <h3>Languages & Backend</h3>
+            <div class="chip-wrap">
+              <span class="chip">Python</span>
+              <span class="chip">Go (Golang)</span>
+              <span class="chip">Java</span>
+              <span class="chip">C++</span>
+              <span class="chip">JavaScript</span>
+              <span class="chip">REST APIs</span>
+              <span class="chip">gRPC</span>
+              <span class="chip">Microservices</span>
+              <span class="chip">Async Services</span>
+              <span class="chip">CLI Applications</span>
+              <span class="chip">Authentication & Authorization</span>
+              <span class="chip">Message Brokers</span>
+            </div>
+          </div>
+          <div class="card panel">
+            <h3>AI, Data & Platform</h3>
+            <div class="chip-wrap">
+              <span class="chip">Agentic AI</span>
+              <span class="chip">A2A Protocols</span>
+              <span class="chip">MCP Integrations</span>
+              <span class="chip">LangGraph Workflows</span>
+              <span class="chip">RAG</span>
+              <span class="chip">Semantic Search</span>
+              <span class="chip">Pandas</span>
+              <span class="chip">EDA</span>
+              <span class="chip">Forecasting</span>
+              <span class="chip">PostgreSQL</span>
+              <span class="chip">Redis</span>
+              <span class="chip">Docker</span>
+              <span class="chip">Kubernetes</span>
+              <span class="chip">AWS</span>
+              <span class="chip">CI/CD</span>
+              <span class="chip">Distributed Systems</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Professional Experience</h2>
+            <p>Focused on scalable systems, delivery quality, and modern AI-enabled backend engineering.</p>
+          </div>
+        </div>
+        <div class="card panel">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="meta-line">May 2023 — Present</div>
+              <h3>Software Engineer • Tiersight</h3>
+              <ul class="clean">
+                <li>Designed and developed backend applications for service-to-service communication in microservices environments with strong focus on reliability, scalability, and maintainability.</li>
+                <li>Built APIs, CLI utilities, and backend integrations using Python and Go across relational and NoSQL systems, async workflows, auth-enabled services, and production deployment pipelines.</li>
+                <li>Contributed to PoCs and solution design to validate business requirements, technical feasibility, and architecture direction before implementation.</li>
+                <li>Worked with Docker, Kubernetes, CI/CD, cloud services, and event-driven communication patterns including broker-based integrations for operational readiness.</li>
+                <li>Expanded into AI application development using agentic workflows, A2A protocol communication, MCP-enabled tooling, RAG, semantic search, EDA, and orchestration patterns for LLM-driven systems.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container grid-2">
+        <div class="card panel">
+          <h2>Education</h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="meta-line">Aug 2024 — Jul 2026</div>
+              <h3>M.Tech in Computer Science Engineering</h3>
+              <p>College of Engineering and Technology, Udaipur</p>
+              <p class="muted-small">Web Applications and Penetration Testing • Cyber and Digital Forensics</p>
+            </div>
+            <div class="timeline-item">
+              <div class="meta-line">Aug 2019 — Jul 2023</div>
+              <h3>B.Tech in Computer Science Engineering</h3>
+              <p>College of Engineering and Technology, Udaipur</p>
+              <p class="muted-small">GPA: 6.5 • Data Structures, Algorithms, DBMS, AI/ML</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card panel">
+          <h2>Role Alignment</h2>
+          <p>I am currently targeting positions where I can contribute across backend engineering and applied AI system development.</p>
+          <div class="chip-wrap" style="margin-top: 18px;">
+            <span class="chip">Backend Engineer</span>
+            <span class="chip">Python Engineer</span>
+            <span class="chip">AI Applications Engineer</span>
+            <span class="chip">Agentic AI Engineer</span>
+          </div>
+          <p style="margin-top: 18px;">
+            I am open to relocation, remote work, and hybrid opportunities with globally distributed teams.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Specialized Focus Areas</h2>
+            <p>High-value areas where I can contribute immediately.</p>
+          </div>
+        </div>
+        <div class="projects">
+          <article class="project">
+            <h3>Backend Systems Engineering</h3>
+            <p>Designing maintainable backend platforms using APIs, microservices, gRPC, relational data models, auth-enabled services, and cloud deployment workflows.</p>
+            <div class="chip-wrap">
+              <span class="chip">Microservices</span>
+              <span class="chip">APIs</span>
+              <span class="chip">gRPC</span>
+              <span class="chip">PostgreSQL</span>
+            </div>
+          </article>
+          <article class="project">
+            <h3>Agentic AI Applications</h3>
+            <p>Building modern AI workflows using agentic patterns, A2A communication, MCP tooling, RAG, semantic search, and orchestration for applied business use cases.</p>
+            <div class="chip-wrap">
+              <span class="chip">A2A</span>
+              <span class="chip">MCP</span>
+              <span class="chip">RAG</span>
+              <span class="chip">Semantic Search</span>
+            </div>
+          </article>
+          <article class="project">
+            <h3>Data & Model Workflows</h3>
+            <p>Supporting analytical and predictive systems with EDA, transformation pipelines, model-serving workflows, and production-oriented integration patterns.</p>
+            <div class="chip-wrap">
+              <span class="chip">Pandas</span>
+              <span class="chip">EDA</span>
+              <span class="chip">Forecasting</span>
+              <span class="chip">Optimization</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Contact</h2>
+            <p>Ready for backend engineering, AI application development, and international remote opportunities.</p>
+          </div>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <span>Email</span>
+            <a href="mailto:lakshyanandwana22@gmail.com">lakshyanandwana22@gmail.com</a>
+          </div>
+          <div class="contact-card">
+            <span>Phone</span>
+            <a href="tel:+917023736972">+91-7023736972</a>
+          </div>
+          <div class="contact-card">
+            <span>Location / Work Preference</span>
+            <div>India • Open to remote, hybrid, relocation</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <div class="tagline">Lakshya Nandwana</div>
+    <div>Backend & AI Applications Engineer</div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    const sections = [...document.querySelectorAll('main section[id]')];
+    const links = [...document.querySelectorAll('.nav-links a')];
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { threshold: 0.35 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
